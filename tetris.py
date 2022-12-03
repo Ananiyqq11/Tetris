@@ -1,8 +1,17 @@
 import turtle
+
 wn = turtle.Screen()
 wn.title("Tetris")
 wn.bgcolor("pink")
 wn.setup(width=450, height=450)
+
+
+class Shape:
+    def __int__(self):
+        self.x = 4
+        self.y = 0
+        self.color = 6
+
 
 grid = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -36,8 +45,9 @@ grid = [
 pen = turtle.Turtle()
 pen.penup()
 pen.speed(0)
-#pen.color("yellow")
+# pen.color("yellow")
 pen.shape("square")
+
 
 def draw_grid(pen, grid):
     top = 200
@@ -45,22 +55,25 @@ def draw_grid(pen, grid):
     colors = ["navy", "white", "violet", "indigo", "green",
               "black", "lightblue", "yellow", "red",
               "blue", "orange", "gray", "aqua", "cyan",
-              "purple", "turquoise", "chocolate",  "brown"]
+              "purple", "turquoise", "chocolate", "brown", "olivedrab"]
     for row in range(len(grid)):
         for col in range(len(grid[0])):
-            screen_x = left + (col*15)
-            screen_y = top - (row*15)
+            screen_x = left + (col * 15)
+            screen_y = top - (row * 15)
             color_number = grid[row][col]
             color = colors[color_number]
             pen.color(color)
             pen.goto(screen_x, screen_y)
             pen.stamp()
-            #if grid[row][col] == 0:
-            #pen.color(colors[0])
-            #pen.goto(screen_x, screen_y)
-            #pen.stamp()
+            # if grid[row][col] == 0:
+            # pen.color(colors[0])
+            # pen.goto(screen_x, screen_y)
+            # pen.stamp()
+
+
+s = Shape()
+grid[s.y][s.x] = s.color
+
 draw_grid(pen, grid)
-
-
 
 wn.mainloop()
